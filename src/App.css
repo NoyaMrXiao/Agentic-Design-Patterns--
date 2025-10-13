@@ -1,0 +1,371 @@
+/* 基础样式重置 - 只保留 box-sizing，不重置 margin 和 padding */
+* {
+  box-sizing: border-box;
+}
+
+/* 原研哉风格滚动条 - 极简设计 */
+.muji-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.muji-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.muji-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.muji-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Markdown 内容样式 - 原研哉极简风格 */
+.prose-muji {
+  color: #374151;
+  line-height: 2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-weight: 300;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: 0.02em;
+}
+
+/* 移除第一个子元素的上边距 */
+.prose-muji > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* 移除最后一个子元素的下边距 */
+.prose-muji > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* 标题样式 - 极简主义 */
+.prose-muji h1,
+.prose-muji h2,
+.prose-muji h3,
+.prose-muji h4,
+.prose-muji h5 {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #1f2937;
+}
+
+/* 移动端优化标题字体 */
+@media (max-width: 640px) {
+  .prose-muji h1 {
+    font-size: 1.5rem !important;
+    margin-top: 3rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .prose-muji h2 {
+    font-size: 1.25rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .prose-muji h3 {
+    font-size: 1.125rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .prose-muji h4 {
+    font-size: 1rem !important;
+  }
+  
+  .prose-muji h5 {
+    font-size: 0.875rem !important;
+  }
+}
+
+.prose-muji ul,
+.prose-muji ol {
+  list-style-position: outside;
+  margin: 2rem 0;
+}
+
+.prose-muji li {
+  margin: 0.75rem 0;
+  font-weight: 300;
+}
+
+.prose-muji blockquote {
+  border-left: 1px solid #d1d5db;
+  padding-left: 2rem;
+  margin: 3rem 0;
+  font-style: normal;
+  color: #6b7280;
+  font-weight: 300;
+}
+
+.prose-muji table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3rem 0;
+  border: 1px solid #e5e7eb;
+}
+
+.prose-muji th,
+.prose-muji td {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 300;
+}
+
+.prose-muji th {
+  background-color: #fafafa;
+  font-weight: 400;
+}
+
+.prose-muji img {
+  max-width: 100%;
+  height: auto;
+  margin: 3rem auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* 移动端图片优化 */
+@media (max-width: 640px) {
+  .prose-muji img {
+    margin: 2rem 0;
+    border-radius: 2px;
+  }
+}
+
+.prose-muji pre {
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 2rem;
+  overflow-x: auto;
+  margin: 3rem 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+  font-weight: 400;
+}
+
+.prose-muji code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+}
+
+/* 打印样式 */
+@media print {
+  aside {
+    display: none !important;
+  }
+
+  header,
+  footer {
+    display: none !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  aside {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .prose-muji table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.875rem;
+  }
+}
+
+/* 极简动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 段落样式 */
+.prose-muji p {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+/* 移动端段落优化 */
+@media (max-width: 640px) {
+  .prose-muji p {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 0.9375rem !important;
+    line-height: 1.8 !important;
+  }
+}
+
+/* 代码块增强 */
+.prose-muji pre {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 移动端代码块优化 */
+@media (max-width: 640px) {
+  .prose-muji pre {
+    padding: 1.5rem !important;
+    margin: 2rem -1rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .prose-muji code {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* 链接样式 - 简约下划线 */
+.prose-muji a {
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* 移动端列表优化 */
+@media (max-width: 640px) {
+  .prose-muji ul,
+  .prose-muji ol {
+    padding-left: 1.5rem !important;
+    margin: 1.5rem 0 !important;
+  }
+  
+  .prose-muji li {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+    margin: 0.75rem 0 !important;
+  }
+}
+
+/* 选中文本样式 - 极简灰色 */
+::selection {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+::-moz-selection {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+/* 引用块样式增强 */
+.prose-muji blockquote {
+  position: relative;
+  background: transparent;
+}
+
+/* 表格悬停效果 - 微妙 */
+.prose-muji tbody tr {
+  transition: all 0.2s ease;
+}
+
+.prose-muji tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* 移动端禁用触摸设备上的悬停效果 */
+@media (hover: none) and (pointer: coarse) {
+  .prose-muji tbody tr:hover {
+    background-color: transparent;
+  }
+}
+
+/* 移动端优化滚动性能 */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 防止移动端字体缩放 */
+@media (max-width: 640px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* 改进移动端选中样式 */
+@media (max-width: 640px) {
+  ::selection {
+    background: #e5e7eb;
+  }
+  
+  ::-moz-selection {
+    background: #e5e7eb;
+  }
+}
+
+/* 按钮禁用状态 */
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 微妙的页面进入动画 */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: pageEnter 0.5s ease-out;
+}
+
+/* 移动端侧边栏打开时防止背景滚动 */
+@media (max-width: 1024px) {
+  body.sidebar-open {
+    overflow: hidden;
+  }
+}
+
+/* 确保移动端高度正确 */
+@media (max-width: 1024px) {
+  /* 使用动态视口高度 */
+  .h-screen {
+    height: 100vh;
+    height: 100dvh; /* 动态视口高度，支持移动浏览器 */
+  }
+}
+
