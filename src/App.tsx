@@ -488,13 +488,12 @@ function App() {
         </div>
 
         {/* 底部信息栏 */}
-        <footer className="bg-white px-6 py-8 text-xs font-light text-gray-400 text-center border-t border-gray-100 flex-shrink-0">
+        <footer className="bg-white px-6 hidden md:block py-8 text-xs font-light text-gray-400 text-center border-t border-gray-100 flex-shrink-0">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 tracking-wide">
             <span>{selectedChapter.title}</span>
             <span className="hidden sm:inline">·</span>
             <span>Antonio Gulli</span>
             <span className="hidden lg:inline">·</span>
-            <span>版税捐赠给救助儿童会</span>
           </div>
         </footer>
       </main>
