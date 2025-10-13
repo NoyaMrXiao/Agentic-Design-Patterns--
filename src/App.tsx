@@ -320,7 +320,7 @@ function App() {
             <div className="flex items-center gap-2 flex-shrink-0">
               {/* GitHub 链接 - 桌面端显示 */}
               <a
-                href="https://github.com/yourusername/agentic-design-patterns-cn"
+                href="https://github.com/NoyaMrXiao/Agentic-Design-Patterns--"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden lg:flex items-center justify-center w-8 h-8 text-gray-400 hover:text-gray-900 transition-colors duration-300"
