@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
+// SEO设置
+
 // 定义书籍章节结构
 interface Chapter {
   id: string
@@ -28,6 +30,7 @@ const chapters: Chapter[] = [
 ]
 
 function App() {
+ 
   const [selectedChapter, setSelectedChapter] = useState<Chapter>(chapters[0])
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(false)
@@ -52,6 +55,7 @@ function App() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [sidebarOpen])
+  
 
   // 控制移动端侧边栏打开时禁止背景滚动
   useEffect(() => {
