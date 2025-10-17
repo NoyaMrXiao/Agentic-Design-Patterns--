@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
-// SEO设置
-
 // 定义书籍章节结构
 interface Chapter {
   id: string
@@ -38,6 +36,90 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1024)
   // 内容区域的引用，用于滚动
   const contentRef = useRef<HTMLDivElement>(null)
+
+  // SEO 优化：动态更新页面标题和 meta 标签
+  useEffect(() => {
+    const baseTitle = '智能体设计模式 | Agentic Design Patterns'
+    const chapterTitle = selectedChapter.title
+    const fullTitle = chapterTitle === '目录' ? baseTitle : `${chapterTitle} - ${baseTitle}`
+    
+    // 更新页面标题
+    document.title = fullTitle
+    
+    // 更新 meta description
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 
+        chapterTitle === '目录' 
+          ? '智能体设计模式中文版 - 探索AI智能体的核心设计模式和最佳实践，包含提示链、路由、并行化、反思、工具使用、规划和多智能体协作等关键概念。'
+          : `智能体设计模式 - ${chapterTitle} - 深入学习AI智能体设计模式的核心概念和实践方法。`
+      )
+    }
+    
+    // 更新 Open Graph 标签
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    if (ogTitle) {
+      ogTitle.setAttribute('content', fullTitle)
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]')
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 
+        chapterTitle === '目录' 
+          ? '智能体设计模式中文版 - 探索AI智能体的核心设计模式和最佳实践'
+          : `智能体设计模式 - ${chapterTitle} - 深入学习AI智能体设计模式的核心概念`
+      )
+    }
+    
+    // 更新 Twitter Card 标签
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', fullTitle)
+    }
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]')
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', 
+        chapterTitle === '目录' 
+          ? '智能体设计模式中文版 - 探索AI智能体的核心设计模式和最佳实践'
+          : `智能体设计模式 - ${chapterTitle} - 深入学习AI智能体设计模式的核心概念`
+      )
+    }
+    
+    // 更新结构化数据
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "智能体设计模式",
+      "alternateName": "Agentic Design Patterns",
+      "author": {
+        "@type": "Person",
+        "name": "Antonio Gulli"
+      },
+      "inLanguage": "zh-CN",
+      "description": "智能体设计模式中文版 - 探索AI智能体的核心设计模式和最佳实践",
+      "url": window.location.href,
+      "hasPart": chapters.map(chapter => ({
+        "@type": "Chapter",
+        "name": chapter.title,
+        "position": chapter.order,
+        "url": `${window.location.origin}/#${chapter.id}`
+      }))
+    }
+    
+    // 移除旧的 structured data
+    const oldScript = document.querySelector('script[type="application/ld+json"]')
+    if (oldScript) {
+      oldScript.remove()
+    }
+    
+    // 添加新的 structured data
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.textContent = JSON.stringify(structuredData)
+    document.head.appendChild(script)
+    
+  }, [selectedChapter])
 
   useEffect(() => {
     loadChapter(selectedChapter)
